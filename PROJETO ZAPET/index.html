@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJETO AULA 20</title>
+    
+    <link rel="stylesheet" href="./CSS/styles.css"
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+    
+
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <a class="nav-brand" href="#">ZAPET</a>
+
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#">INÍCIO</a></li>
+                <li class="nav-item"><a href="#">SERVIÇOS</a></li>
+                <li class="nav-item"><a href="#">FALE CONOSCO</a></li>
+            </ul>
+
+           
+            <div class="hamburguer-menu">
+                <svg
+                  width="30"
+                  height="20"
+                  viewBox="0 0 30 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M0 1H30" stroke="#21243D" stroke-width="1.6" />
+                  <path d="M0 10H30" stroke="#21243D" stroke-width="1.6" />
+                  <path d="M0 19H30" stroke="#21243D" stroke-width="1.6" />
+                </svg>
+              </div>
+            </nav>
+          </header>
+    
+    <main>
+        <section id="banner">
+            <div class="banner-content">
+                <h1 class="banner-content-title">ZAPET</h1>
+                
+                <p>Nós somos a Zapet! Sua mais nova clínica veterinária do Recife. Temos uma excelente equipe de veterinários das mais diversas áreas prontos para cuidar do seu animalzinho. Dispomos também de uma loja com uma ampla rede de medicamentos e acessórios de altíssima qualidade! Ofertamos os serviços de banho, tosa, dog-walker, day-care, hotelzinho 24h e muito mais!</p>
+
+                <button class="banner-content-btn">Saiba mais!</button>
+            </div>
+
+            <img 
+                src="logo.png"
+                alt="Instagram"
+                class="banner-image"
+            />
+        </section>
+
+      <!-- Carrossel de imagens -->
+      <section id="carousel">
+        <div class="carousel-slide">
+            <img src="consultavet.jpg" alt="Imagem 1">
+            <img src="hotel.jpg" alt="Imagem 2">
+            <img src="Post_banho_e_tosa.jpg" alt="Imagem 3">
+            <img src="farmacia.png" alt="Imagem 4">
+            <img src="walker.jpeg" alt="Imagem 5">
+            <img src="recep.jpg" alt="Imagem 6">
+        </div>
+        <button class="arrow prevBtn">&lt;</button>
+        <button class="arrow nextBtn">&gt;</button>
+    </section>
+
+    <!-- Formulário -->
+    <div class="form-popup" id="myForm">
+        <form action="#" class="form-container" onsubmit="submitForm(event)">
+            <h2>AGENDE SEU SERVIÇO!</h2>
+            <label for="pet-name"><b>Nome do Pet:</b></label>
+            <input type="text" placeholder="Nome do Pet" name="pet-name" required>
+
+            <label for="cpf"><b>CPF do Tutor:</b></label>
+            <input type="text" placeholder="CPF do Tutor" name="cpf" required>
+
+            <label for="phone"><b>Telefone do Tutor:</b></label>
+            <input type="text" placeholder="Telefone do Tutor" name="phone" required>
+
+            <label for="service"><b>Serviço:</b></label>
+            <select name="service" id="service" required>
+                <option value="">Selecione o serviço desejado:</option>
+                <option value="1">Banho e/ou tosa</option>
+                <option value="2">Consulta</option>
+                <option value="3">Hotelzinho</option>
+                <option value="4">Day-care</option>
+                <option value="5">Dog-walker</option>
+            </select>
+            <button type="submit" class="btn">Submeter!</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Fechar</button>
+        </form>
+    </div>
+    
+        <section id="posts">
+            <div class="posts-content">
+                <div class="posts-content-header">
+                    <h2 class="section-title">O que nossos clientes dizem:</h2>
+                    <!-- Aqui está o link "AGENDE JÁ!" -->
+                    <a href="#" class="view-all-link" onclick="openForm()">AGENDE JÁ!</a>
+                </div>
+
+             <div class = "posts-cards">
+                <div class="posts-cards-left">
+                    <h3>Joaquina disse:</h3>
+                 <span>22, Janeiro, 2024</span>
+                    <p>
+                    Eu amo a Zapet! Sempre levo meu cachorrinho e somos muito bem atendidos. Especialmente por Dra. Maria, que é uma veterinária super competente e paciente.</p>
+                </div>
+
+                <div class="posts-cards-right">
+                 <h3>Alex disse:</h3>
+                    <span>26, Março 2024</span>
+                    <p>
+                    O melhor preço de ração é aqui! Sempre encontro tudo que preciso na lojinha. Sem contar do hotelzinho, quando preciso viajar deixo meus "filhinhos" sem preocupações! A estrutura é excelente e o atendimento dos funcionários é maravilhoso! Super recomendo a Zapet!
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>ZAPET: Empresa do ramo veterinário que atua como clínica e pet shop desde 2023. <br>
+
+        Desenvolvedora: Luciana Melo.
+    </footer>
+
+    <script>
+        // JavaScript para o carrossel
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselSlide = document.querySelector('.carousel-slide');
+            const carouselImages = document.querySelectorAll('.carousel-slide img');
+            const prevBtn = document.querySelector('.prevBtn');
+            const nextBtn = document.querySelector('.nextBtn');
+
+            // Contador de imagens
+            let counter = 1;
+            const size = carouselImages[0].clientWidth;
+
+            carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+
+             // Botão de próxima imagem
+    nextBtn.addEventListener('click', () => {
+        if (counter >= carouselImages.length - 1) {
+            counter = 1;
+            carouselSlide.style.transition = "none";
+            carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+            return;
+        }
+        counter++;
+        carouselSlide.style.transition = "transform 0.4s ease-in-out";
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    });
+
+     // Botão de imagem anterior
+     prevBtn.addEventListener('click', () => {
+        if (counter <= 0) {
+            counter = carouselImages.length - 2;
+            carouselSlide.style.transition = "none";
+            carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+            return;
+        }
+        counter--;
+        carouselSlide.style.transition = "transform 0.4s ease-in-out";
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    });
+  
+            // Transição infinita
+            carouselSlide.addEventListener('transitionend', () => {
+                if (carouselImages[counter].id === 'lastClone') {
+                    carouselSlide.style.transition = "none";
+                    counter = carouselImages.length - 2;
+                    carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+                }
+                if (carouselImages[counter].id === 'firstClone') {
+                    carouselSlide.style.transition = "none";
+                    counter = carouselImages.length - counter;
+                    carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+                }
+            });
+        });
+
+        
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+        function submitForm(event) {
+            // Evitar o comportamento padrão de envio do formulário
+            event.preventDefault();
+
+            // Exibir pop-up com a mensagem
+            alert("Ok! Entraremos em contato!");
+            // Fechar o formulário
+            closeForm();
+
+        }
+    </script>
+       
+</body>
+</html>
